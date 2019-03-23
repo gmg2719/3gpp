@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+var antlrUtils_1 = require("../antlrUtils");
 var moduleBody_1 = require("./moduleBody");
 var ModuleDefinitionVisitor = /** @class */ (function () {
     function ModuleDefinitionVisitor() {
@@ -12,8 +13,7 @@ var ModuleDefinitionVisitor = /** @class */ (function () {
             var moduleName = moduleDefinitionCtx.children[0].getText();
             for (var _i = 0, _a = moduleDefinitionCtx.children; _i < _a.length; _i++) {
                 var child = _a[_i];
-                var ruleIndex = child.ruleIndex;
-                if (ruleIndex && moduleDefinitionCtx.parser.ruleNames[ruleIndex] === 'moduleBody') {
+                if (antlrUtils_1.matchesRule(child, moduleDefinitionCtx, 'moduleBody')) {
                     var moduleBody = child.accept(new moduleBody_1.ModuleBodyVisitor());
                     return { moduleName: moduleName, moduleBody: moduleBody };
                 }
