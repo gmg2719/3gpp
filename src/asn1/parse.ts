@@ -13,5 +13,5 @@ export function parse(text: string): any /* TODO */ {
   const parser = new ASNParser(tokens);
   parser.buildParseTrees = true;
   const tree = parser.modules();
-  tree.accept(new ModulesVisitor());
+  return tree.accept(new ModulesVisitor());
 }

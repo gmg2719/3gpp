@@ -12,7 +12,8 @@ var ModulesVisitor = /** @class */ (function () {
         if (modulesCtx.children) {
             for (var _i = 0, _a = modulesCtx.children; _i < _a.length; _i++) {
                 var moduleDefinitionCtx = _a[_i];
-                moduleDefinitionCtx.accept(new moduleDefinition_1.ModuleDefinitionVisitor(modules));
+                var _b = moduleDefinitionCtx.accept(new moduleDefinition_1.ModuleDefinitionVisitor()), moduleName = _b.moduleName, moduleBody = _b.moduleBody;
+                modules[moduleName] = moduleBody;
             }
         }
         return modules;

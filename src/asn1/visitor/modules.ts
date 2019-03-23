@@ -8,7 +8,8 @@ export class ModulesVisitor {
     }
     if (modulesCtx.children) {
       for (const moduleDefinitionCtx of modulesCtx.children) {
-        moduleDefinitionCtx.accept(new ModuleDefinitionVisitor(modules));
+        const {moduleName, moduleBody} = moduleDefinitionCtx.accept(new ModuleDefinitionVisitor());
+        modules[moduleName] = moduleBody;
       }
     }
     return modules;
