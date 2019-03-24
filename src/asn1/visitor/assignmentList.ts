@@ -1,4 +1,5 @@
 import { ruleName } from '../antlrUtils';
+import { TypeAssignmentVisitor } from './typeAssignment';
 
 interface IAssignmentList {
   types: any;
@@ -26,6 +27,8 @@ export class AssignmentListVisitor {
             break;
           }
           case 'typeAssignment': {
+            const {typeName, typeDefinition} = childCtx.accept(new TypeAssignmentVisitor());
+            this.add(assignments.types, typeName, typeDefinition);
             break;
           }
           case 'parameterizedAssignment': {

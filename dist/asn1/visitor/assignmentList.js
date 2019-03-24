@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
+var typeAssignment_1 = require("./typeAssignment");
 var AssignmentListVisitor = /** @class */ (function () {
     function AssignmentListVisitor() {
     }
@@ -25,6 +26,8 @@ var AssignmentListVisitor = /** @class */ (function () {
                         break;
                     }
                     case 'typeAssignment': {
+                        var _b = childCtx.accept(new typeAssignment_1.TypeAssignmentVisitor()), typeName = _b.typeName, typeDefinition = _b.typeDefinition;
+                        this.add(assignments.types, typeName, typeDefinition);
                         break;
                     }
                     case 'parameterizedAssignment': {
