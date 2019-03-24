@@ -1,4 +1,5 @@
 import { ruleName } from '../antlrUtils';
+import { AssignmentListVisitor } from './assignmentList';
 import { ImportsVisitor } from './imports';
 
 interface IModuleBody {
@@ -25,6 +26,7 @@ export class ModuleBodyVisitor {
             break;
           }
           case 'assignmentList': {
+            const {assignmentList, constantList} = childCtx.accept(new AssignmentListVisitor());
             break;
           }
           default: {

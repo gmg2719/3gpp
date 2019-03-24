@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
+var assignmentList_1 = require("./assignmentList");
 var imports_1 = require("./imports");
 var ModuleBodyVisitor = /** @class */ (function () {
     function ModuleBodyVisitor() {
@@ -23,6 +24,7 @@ var ModuleBodyVisitor = /** @class */ (function () {
                         break;
                     }
                     case 'assignmentList': {
+                        var _b = childCtx.accept(new assignmentList_1.AssignmentListVisitor()), assignmentList = _b.assignmentList, constantList = _b.constantList;
                         break;
                     }
                     default: {
