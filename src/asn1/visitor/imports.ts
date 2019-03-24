@@ -8,9 +8,9 @@ export class ImportsVisitor {
     }
     let imports = null;
     if (importsCtx.children) {
-      for (const child of importsCtx.children) {
-        if (ruleName(child, importsCtx) === 'symbolsImported') {
-          imports = child.accept(new SymbolsImportedVisitor());
+      for (const childCtx of importsCtx.children) {
+        if (ruleName(childCtx, importsCtx) === 'symbolsImported') {
+          imports = childCtx.accept(new SymbolsImportedVisitor());
         }
       }
     }
