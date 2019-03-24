@@ -4,8 +4,8 @@ import { ImportsVisitor } from './imports';
 
 interface IModuleBody {
   imports: any;
-  assignmentList: any;
-  constantList: any;
+  types: any;
+  constants: any;
 }
 
 export class ModuleBodyVisitor {
@@ -15,8 +15,8 @@ export class ModuleBodyVisitor {
     }
     const moduleBody: IModuleBody = {
       imports: null,
-      assignmentList: null,
-      constantList: null,
+      types: null,
+      constants: null,
     };
     if (moduleBodyCtx.children) {
       for (const childCtx of moduleBodyCtx.children) {
@@ -26,9 +26,9 @@ export class ModuleBodyVisitor {
             break;
           }
           case 'assignmentList': {
-            const {assignmentList, constantList} = childCtx.accept(new AssignmentListVisitor());
-            moduleBody.assignmentList = assignmentList;
-            moduleBody.constantList = constantList;
+            const {types, constants} = childCtx.accept(new AssignmentListVisitor());
+            moduleBody.types = types;
+            moduleBody.constants = constants;
             break;
           }
           default: {
