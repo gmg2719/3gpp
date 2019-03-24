@@ -1,4 +1,4 @@
-import { matchesRule } from '../antlrUtils';
+import { ruleName } from '../antlrUtils';
 import { SymbolsImportedVisitor } from './symbolsImported';
 
 export class ImportsVisitor {
@@ -9,7 +9,7 @@ export class ImportsVisitor {
     let imports = null;
     if (importsCtx.children) {
       for (const child of importsCtx.children) {
-        if (matchesRule(child, importsCtx, 'symbolsImported')) {
+        if (ruleName(child, importsCtx) === 'symbolsImported') {
           imports = child.accept(new SymbolsImportedVisitor());
         }
       }

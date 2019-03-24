@@ -1,6 +1,9 @@
 "use strict";
 exports.__esModule = true;
-function matchesRule(ctx, parentCtx, ruleName) {
-    return ctx.ruleIndex && parentCtx.parser.ruleNames[ctx.ruleIndex] === ruleName;
+function ruleName(ctx, parentCtx) {
+    if (!ctx.ruleIndex) {
+        return null;
+    }
+    return parentCtx.parser.ruleNames[ctx.ruleIndex];
 }
-exports.matchesRule = matchesRule;
+exports.ruleName = ruleName;

@@ -12,12 +12,18 @@ var ModuleBodyVisitor = /** @class */ (function () {
         var moduleBody = {};
         if (moduleBodyCtx.children) {
             for (var _i = 0, _a = moduleBodyCtx.children; _i < _a.length; _i++) {
-                var child = _a[_i];
-                if (antlrUtils_1.matchesRule(child, moduleBodyCtx, 'imports')) {
-                    moduleBody.imports = child.accept(new imports_1.ImportsVisitor());
-                }
-                else if (antlrUtils_1.matchesRule(child, moduleBodyCtx, 'assignmentList')) {
-                    moduleBody.assignmentList = {};
+                var childCtx = _a[_i];
+                switch (antlrUtils_1.ruleName(childCtx, moduleBodyCtx)) {
+                    case 'imports': {
+                        moduleBody.imports = childCtx.accept(new imports_1.ImportsVisitor());
+                        break;
+                    }
+                    case 'assignmentList': {
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
                 }
             }
         }

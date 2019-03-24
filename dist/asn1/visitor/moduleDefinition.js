@@ -12,9 +12,9 @@ var ModuleDefinitionVisitor = /** @class */ (function () {
         if (moduleDefinitionCtx.children) {
             var moduleName = moduleDefinitionCtx.children[0].getText();
             for (var _i = 0, _a = moduleDefinitionCtx.children; _i < _a.length; _i++) {
-                var child = _a[_i];
-                if (antlrUtils_1.matchesRule(child, moduleDefinitionCtx, 'moduleBody')) {
-                    var moduleBody = child.accept(new moduleBody_1.ModuleBodyVisitor());
+                var childCtx = _a[_i];
+                if (antlrUtils_1.ruleName(childCtx, moduleDefinitionCtx) === 'moduleBody') {
+                    var moduleBody = childCtx.accept(new moduleBody_1.ModuleBodyVisitor());
                     return { moduleName: moduleName, moduleBody: moduleBody };
                 }
             }

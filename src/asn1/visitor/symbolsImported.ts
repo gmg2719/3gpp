@@ -1,4 +1,4 @@
-import { matchesRule } from '../antlrUtils';
+import { ruleName } from '../antlrUtils';
 
 export class SymbolsImportedVisitor {
   private visitChildren(symbolsImportedCtx: any): any {
@@ -11,7 +11,7 @@ export class SymbolsImportedVisitor {
         for (const symbolsFromModuleCtx of symbolsFromModuleListCtx.children) {
           const symbolListCtx = symbolsFromModuleCtx.children[0];
           const symbolList = symbolListCtx.children.map((symbolCtx: any) => {
-            if (matchesRule(symbolCtx, symbolListCtx, 'symbol')) {
+            if (ruleName(symbolCtx, symbolListCtx) === 'symbol') {
               return symbolCtx.getText();
             }
           }).filter((symbol: string) => {

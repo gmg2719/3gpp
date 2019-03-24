@@ -15,7 +15,7 @@ var SymbolsImportedVisitor = /** @class */ (function () {
                 var _loop_1 = function (symbolsFromModuleCtx) {
                     var symbolListCtx = symbolsFromModuleCtx.children[0];
                     var symbolList = symbolListCtx.children.map(function (symbolCtx) {
-                        if (antlrUtils_1.matchesRule(symbolCtx, symbolListCtx, 'symbol')) {
+                        if (antlrUtils_1.ruleName(symbolCtx, symbolListCtx) === 'symbol') {
                             return symbolCtx.getText();
                         }
                     }).filter(function (symbol) {

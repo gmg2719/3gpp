@@ -1,3 +1,6 @@
-export function matchesRule(ctx: any, parentCtx: any, ruleName: string): boolean {
-  return ctx.ruleIndex && parentCtx.parser.ruleNames[ctx.ruleIndex] === ruleName;
+export function ruleName(ctx: any, parentCtx: any): string {
+  if (!ctx.ruleIndex) {
+    return null;
+  }
+  return parentCtx.parser.ruleNames[ctx.ruleIndex];
 }

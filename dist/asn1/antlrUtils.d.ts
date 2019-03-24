@@ -1,1 +1,1 @@
-export declare function matchesRule(ctx: any, parentCtx: any, ruleName: string): boolean;
+export declare function ruleName(ctx: any, parentCtx: any): string;

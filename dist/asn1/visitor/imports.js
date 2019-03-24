@@ -13,7 +13,7 @@ var ImportsVisitor = /** @class */ (function () {
         if (importsCtx.children) {
             for (var _i = 0, _a = importsCtx.children; _i < _a.length; _i++) {
                 var child = _a[_i];
-                if (antlrUtils_1.matchesRule(child, importsCtx, 'symbolsImported')) {
+                if (antlrUtils_1.ruleName(child, importsCtx) === 'symbolsImported') {
                     imports = child.accept(new symbolsImported_1.SymbolsImportedVisitor());
                 }
             }

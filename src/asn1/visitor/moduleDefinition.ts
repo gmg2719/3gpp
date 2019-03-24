@@ -1,4 +1,4 @@
-import { matchesRule } from '../antlrUtils';
+import { ruleName } from '../antlrUtils';
 import { ModuleBodyVisitor } from './moduleBody';
 
 export class ModuleDefinitionVisitor {
@@ -8,9 +8,9 @@ export class ModuleDefinitionVisitor {
     }
     if (moduleDefinitionCtx.children) {
       const moduleName = moduleDefinitionCtx.children[0].getText();
-      for (const child of moduleDefinitionCtx.children) {
-        if (matchesRule(child, moduleDefinitionCtx, 'moduleBody')) {
-          const moduleBody = child.accept(new ModuleBodyVisitor());
+      for (const childCtx of moduleDefinitionCtx.children) {
+        if (ruleName(childCtx, moduleDefinitionCtx) === 'moduleBody') {
+          const moduleBody = childCtx.accept(new ModuleBodyVisitor());
           return {moduleName, moduleBody};
         }
       }
