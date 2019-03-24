@@ -1,8 +1,12 @@
 import { ModuleDefinitionVisitor } from './moduleDefinition';
 
+interface IModules {
+  [moduleName: string]: any;
+}
+
 export class ModulesVisitor {
   private visitChildren(modulesCtx: any): any {
-    const modules = {};
+    const modules: IModules = {};
     if (!modulesCtx) {
       return;
     }

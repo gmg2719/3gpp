@@ -9,7 +9,11 @@ var ModuleBodyVisitor = /** @class */ (function () {
         if (!moduleBodyCtx) {
             return;
         }
-        var moduleBody = {};
+        var moduleBody = {
+            imports: null,
+            assignmentList: null,
+            constantList: null
+        };
         if (moduleBodyCtx.children) {
             for (var _i = 0, _a = moduleBodyCtx.children; _i < _a.length; _i++) {
                 var childCtx = _a[_i];
