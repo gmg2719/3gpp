@@ -35,6 +35,7 @@ export class AssignmentListVisitor {
             break;
           }
           case 'objectClassAssignment': {
+            // TBD
             break;
           }
           default: {

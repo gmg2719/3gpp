@@ -34,6 +34,7 @@ var AssignmentListVisitor = /** @class */ (function () {
                         break;
                     }
                     case 'objectClassAssignment': {
+                        // TBD
                         break;
                     }
                     default: {
