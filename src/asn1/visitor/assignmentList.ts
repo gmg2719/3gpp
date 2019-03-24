@@ -1,8 +1,8 @@
 import { ruleName } from '../antlrUtils';
 
 interface IAssignmentList {
-  assignmentList: any;
-  constantList: any;
+  types: any;
+  constants: any;
 }
 
 export class AssignmentListVisitor {
@@ -10,22 +10,22 @@ export class AssignmentListVisitor {
     if (!assignmentListCtx) {
       return;
     }
-    const assignmentList: IAssignmentList = {
-      assignmentList: null,
-      constantList: null,
+    const assignments: IAssignmentList = {
+      types: null,
+      constants: null,
     };
     if (assignmentListCtx.children) {
       for (const assignmentCtx of assignmentListCtx.children) {
-        switch (ruleName(assignmentCtx.children[1], assignmentCtx)) {
+        const childCtx = assignmentCtx.children[1];
+        switch (ruleName(childCtx, assignmentCtx)) {
           case 'valueAssignment': {
             const identifier = assignmentCtx.children[0].getText();
-            const valueAssignmentCtx = assignmentCtx.children[1];
-            const type = valueAssignmentCtx.children[0].getText();
-            const value = valueAssignmentCtx.children[2].getText();
-            if (!assignmentList.constantList) {
-              assignmentList.constantList = {};
+            const type = childCtx.children[0].getText();
+            const value = childCtx.children[2].getText();
+            if (!assignments.constants) {
+              assignments.constants = {};
             }
-            assignmentList.constantList[identifier] = {type, value};
+            assignments.constants[identifier] = {type, value};
             break;
           }
           case 'typeAssignment': {
@@ -44,6 +44,6 @@ export class AssignmentListVisitor {
         }
       }
     }
-    return assignmentList;
+    return assignments;
   }
 }
