@@ -17,6 +17,14 @@ var AssignmentListVisitor = /** @class */ (function () {
                 var assignmentCtx = _a[_i];
                 switch (antlrUtils_1.ruleName(assignmentCtx.children[1], assignmentCtx)) {
                     case 'valueAssignment': {
+                        var identifier = assignmentCtx.children[0].getText();
+                        var valueAssignmentCtx = assignmentCtx.children[1];
+                        var type = valueAssignmentCtx.children[0].getText();
+                        var value = valueAssignmentCtx.children[2].getText();
+                        if (!assignmentList.constantList) {
+                            assignmentList.constantList = {};
+                        }
+                        assignmentList.constantList[identifier] = { type: type, value: value };
                         break;
                     }
                     case 'typeAssignment': {

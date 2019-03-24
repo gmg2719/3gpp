@@ -25,6 +25,8 @@ var ModuleBodyVisitor = /** @class */ (function () {
                     }
                     case 'assignmentList': {
                         var _b = childCtx.accept(new assignmentList_1.AssignmentListVisitor()), assignmentList = _b.assignmentList, constantList = _b.constantList;
+                        moduleBody.assignmentList = assignmentList;
+                        moduleBody.constantList = constantList;
                         break;
                     }
                     default: {

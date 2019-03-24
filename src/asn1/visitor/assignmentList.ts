@@ -18,6 +18,14 @@ export class AssignmentListVisitor {
       for (const assignmentCtx of assignmentListCtx.children) {
         switch (ruleName(assignmentCtx.children[1], assignmentCtx)) {
           case 'valueAssignment': {
+            const identifier = assignmentCtx.children[0].getText();
+            const valueAssignmentCtx = assignmentCtx.children[1];
+            const type = valueAssignmentCtx.children[0].getText();
+            const value = valueAssignmentCtx.children[2].getText();
+            if (!assignmentList.constantList) {
+              assignmentList.constantList = {};
+            }
+            assignmentList.constantList[identifier] = {type, value};
             break;
           }
           case 'typeAssignment': {

@@ -27,6 +27,8 @@ export class ModuleBodyVisitor {
           }
           case 'assignmentList': {
             const {assignmentList, constantList} = childCtx.accept(new AssignmentListVisitor());
+            moduleBody.assignmentList = assignmentList;
+            moduleBody.constantList = constantList;
             break;
           }
           default: {
