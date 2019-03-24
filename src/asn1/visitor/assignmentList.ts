@@ -22,10 +22,7 @@ export class AssignmentListVisitor {
             const identifier = assignmentCtx.children[0].getText();
             const type = childCtx.children[0].getText();
             const value = childCtx.children[2].getText();
-            if (!assignments.constants) {
-              assignments.constants = {};
-            }
-            assignments.constants[identifier] = {type, value};
+            this.add(assignments.constants, identifier, {type, value});
             break;
           }
           case 'typeAssignment': {
@@ -45,5 +42,12 @@ export class AssignmentListVisitor {
       }
     }
     return assignments;
+  }
+
+  private add(obj: any, typeName: string, typeDefinition: any): void {
+    if (!obj) {
+      obj = {};
+    }
+    obj[typeName] = typeDefinition;
   }
 }
