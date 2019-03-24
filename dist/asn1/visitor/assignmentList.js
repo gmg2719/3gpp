@@ -8,9 +8,9 @@ var AssignmentListVisitor = /** @class */ (function () {
         if (!assignmentListCtx) {
             return;
         }
-        var assignmentList = {
-            assignmentList: null,
-            constantList: null
+        var assignments = {
+            types: null,
+            constants: null
         };
         if (assignmentListCtx.children) {
             for (var _i = 0, _a = assignmentListCtx.children; _i < _a.length; _i++) {
@@ -21,10 +21,10 @@ var AssignmentListVisitor = /** @class */ (function () {
                         var identifier = assignmentCtx.children[0].getText();
                         var type = childCtx.children[0].getText();
                         var value = childCtx.children[2].getText();
-                        if (!assignmentList.constantList) {
-                            assignmentList.constantList = {};
+                        if (!assignments.constants) {
+                            assignments.constants = {};
                         }
-                        assignmentList.constantList[identifier] = { type: type, value: value };
+                        assignments.constants[identifier] = { type: type, value: value };
                         break;
                     }
                     case 'typeAssignment': {
@@ -43,7 +43,7 @@ var AssignmentListVisitor = /** @class */ (function () {
                 }
             }
         }
-        return assignmentList;
+        return assignments;
     };
     return AssignmentListVisitor;
 }());

@@ -12,8 +12,8 @@ var ModuleBodyVisitor = /** @class */ (function () {
         }
         var moduleBody = {
             imports: null,
-            assignmentList: null,
-            constantList: null
+            types: null,
+            constants: null
         };
         if (moduleBodyCtx.children) {
             for (var _i = 0, _a = moduleBodyCtx.children; _i < _a.length; _i++) {
@@ -24,9 +24,9 @@ var ModuleBodyVisitor = /** @class */ (function () {
                         break;
                     }
                     case 'assignmentList': {
-                        var _b = childCtx.accept(new assignmentList_1.AssignmentListVisitor()), assignmentList = _b.assignmentList, constantList = _b.constantList;
-                        moduleBody.assignmentList = assignmentList;
-                        moduleBody.constantList = constantList;
+                        var _b = childCtx.accept(new assignmentList_1.AssignmentListVisitor()), types = _b.types, constants = _b.constants;
+                        moduleBody.types = types;
+                        moduleBody.constants = constants;
                         break;
                     }
                     default: {
