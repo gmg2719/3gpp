@@ -10,8 +10,8 @@ var AssignmentListVisitor = /** @class */ (function () {
             return;
         }
         var assignments = {
-            types: null,
-            constants: null
+            types: {},
+            constants: {}
         };
         if (assignmentListCtx.children) {
             for (var _i = 0, _a = assignmentListCtx.children; _i < _a.length; _i++) {
@@ -22,12 +22,12 @@ var AssignmentListVisitor = /** @class */ (function () {
                         var identifier = assignmentCtx.children[0].getText();
                         var type = childCtx.children[0].getText();
                         var value = childCtx.children[2].getText();
-                        this.add(assignments.constants, identifier, { type: type, value: value });
+                        assignments.constants[identifier] = { type: type, value: value };
                         break;
                     }
                     case 'typeAssignment': {
                         var _b = childCtx.accept(new typeAssignment_1.TypeAssignmentVisitor()), typeName = _b.typeName, typeDefinition = _b.typeDefinition;
-                        this.add(assignments.types, typeName, typeDefinition);
+                        assignments.types[typeName] = typeDefinition;
                         break;
                     }
                     case 'parameterizedAssignment': {
@@ -43,13 +43,13 @@ var AssignmentListVisitor = /** @class */ (function () {
                 }
             }
         }
-        return assignments;
-    };
-    AssignmentListVisitor.prototype.add = function (obj, typeName, typeDefinition) {
-        if (!obj) {
-            obj = {};
+        if (!Object.keys(assignments.types).length) {
+            assignments.types = null;
         }
-        obj[typeName] = typeDefinition;
+        if (!Object.keys(assignments.constants).length) {
+            assignments.constants = null;
+        }
+        return assignments;
     };
     return AssignmentListVisitor;
 }());

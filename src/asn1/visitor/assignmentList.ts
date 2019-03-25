@@ -12,8 +12,8 @@ export class AssignmentListVisitor {
       return;
     }
     const assignments: IAssignmentList = {
-      types: null,
-      constants: null,
+      types: {},
+      constants: {},
     };
     if (assignmentListCtx.children) {
       for (const assignmentCtx of assignmentListCtx.children) {
@@ -23,12 +23,12 @@ export class AssignmentListVisitor {
             const identifier = assignmentCtx.children[0].getText();
             const type = childCtx.children[0].getText();
             const value = childCtx.children[2].getText();
-            this.add(assignments.constants, identifier, {type, value});
+            assignments.constants[identifier] = {type, value};
             break;
           }
           case 'typeAssignment': {
             const {typeName, typeDefinition} = childCtx.accept(new TypeAssignmentVisitor());
-            this.add(assignments.types, typeName, typeDefinition);
+            assignments.types[typeName] = typeDefinition;
             break;
           }
           case 'parameterizedAssignment': {
@@ -44,13 +44,12 @@ export class AssignmentListVisitor {
         }
       }
     }
-    return assignments;
-  }
-
-  private add(obj: any, typeName: string, typeDefinition: any): void {
-    if (!obj) {
-      obj = {};
+    if (!Object.keys(assignments.types).length) {
+      assignments.types = null;
     }
-    obj[typeName] = typeDefinition;
+    if (!Object.keys(assignments.constants).length) {
+      assignments.constants = null;
+    }
+    return assignments;
   }
 }
