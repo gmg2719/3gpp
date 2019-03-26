@@ -31,10 +31,15 @@ export class AssignmentListVisitor {
             break;
           }
           case 'typeAssignment': {
-            assignments.types[identifier] = childCtx.accept(new TypeAssignmentVisitor());
+            const typeDefinition = childCtx.accept(new TypeAssignmentVisitor());
+            if (!typeDefinition) {
+              break;
+            }
+            assignments.types[identifier] = typeDefinition;
             break;
           }
           case 'parameterizedAssignment': {
+            // TODO
             break;
           }
           case 'objectClassAssignment': {
