@@ -16,6 +16,7 @@ var AssignmentListVisitor = /** @class */ (function () {
         if (assignmentListCtx.children) {
             for (var _i = 0, _a = assignmentListCtx.children; _i < _a.length; _i++) {
                 var assignmentCtx = _a[_i];
+                var identifier = assignmentCtx.children[0].getText();
                 var childCtx = assignmentCtx.children[1];
                 switch (antlrUtils_1.ruleName(childCtx, assignmentCtx)) {
                     case 'valueAssignment': {
@@ -24,7 +25,6 @@ var AssignmentListVisitor = /** @class */ (function () {
                         if (type !== 'INTEGER') {
                             break;
                         }
-                        var identifier = assignmentCtx.children[0].getText();
                         var value = Number(childCtx.children[2].getText());
                         assignments.constants[identifier] = { type: type, value: value };
                         break;

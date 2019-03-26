@@ -17,6 +17,7 @@ export class AssignmentListVisitor {
     };
     if (assignmentListCtx.children) {
       for (const assignmentCtx of assignmentListCtx.children) {
+        const identifier = assignmentCtx.children[0].getText();
         const childCtx = assignmentCtx.children[1];
         switch (ruleName(childCtx, assignmentCtx)) {
           case 'valueAssignment': {
@@ -25,7 +26,6 @@ export class AssignmentListVisitor {
             if (type !== 'INTEGER') {
               break;
             }
-            const identifier = assignmentCtx.children[0].getText();
             const value = Number(childCtx.children[2].getText());
             assignments.constants[identifier] = {type, value};
             break;
