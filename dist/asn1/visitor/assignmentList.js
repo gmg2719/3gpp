@@ -19,9 +19,13 @@ var AssignmentListVisitor = /** @class */ (function () {
                 var childCtx = assignmentCtx.children[1];
                 switch (antlrUtils_1.ruleName(childCtx, assignmentCtx)) {
                     case 'valueAssignment': {
-                        var identifier = assignmentCtx.children[0].getText();
                         var type = childCtx.children[0].getText();
-                        var value = childCtx.children[2].getText();
+                        // Currently only support INTEGER constants
+                        if (type !== 'INTEGER') {
+                            break;
+                        }
+                        var identifier = assignmentCtx.children[0].getText();
+                        var value = Number(childCtx.children[2].getText());
                         assignments.constants[identifier] = { type: type, value: value };
                         break;
                     }
