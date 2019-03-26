@@ -31,8 +31,7 @@ export class AssignmentListVisitor {
             break;
           }
           case 'typeAssignment': {
-            const {typeName, typeDefinition} = childCtx.accept(new TypeAssignmentVisitor());
-            assignments.types[typeName] = typeDefinition;
+            assignments.types[identifier] = childCtx.accept(new TypeAssignmentVisitor());
             break;
           }
           case 'parameterizedAssignment': {

@@ -30,8 +30,7 @@ var AssignmentListVisitor = /** @class */ (function () {
                         break;
                     }
                     case 'typeAssignment': {
-                        var _b = childCtx.accept(new typeAssignment_1.TypeAssignmentVisitor()), typeName = _b.typeName, typeDefinition = _b.typeDefinition;
-                        assignments.types[typeName] = typeDefinition;
+                        assignments.types[identifier] = childCtx.accept(new typeAssignment_1.TypeAssignmentVisitor());
                         break;
                     }
                     case 'parameterizedAssignment': {
