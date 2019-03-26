@@ -22,7 +22,7 @@ export class AssignmentListVisitor {
         switch (ruleName(childCtx, assignmentCtx)) {
           case 'valueAssignment': {
             const type = childCtx.children[0].getText();
-            // Currently only support INTEGER constants
+            // TODO: Currently only support INTEGER constants
             if (type !== 'INTEGER') {
               break;
             }

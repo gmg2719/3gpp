@@ -21,7 +21,7 @@ var AssignmentListVisitor = /** @class */ (function () {
                 switch (antlrUtils_1.ruleName(childCtx, assignmentCtx)) {
                     case 'valueAssignment': {
                         var type = childCtx.children[0].getText();
-                        // Currently only support INTEGER constants
+                        // TODO: Currently only support INTEGER constants
                         if (type !== 'INTEGER') {
                             break;
                         }
