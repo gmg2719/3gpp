@@ -7,9 +7,12 @@ var TypeAssignmentVisitor = /** @class */ (function () {
         if (!typeAssignmentCtx) {
             return;
         }
+        // tslint:disable-next-line:prefer-const
+        var typeDefinition = null;
         if (typeAssignmentCtx.children) {
             // TODO
         }
+        return typeDefinition;
     };
     return TypeAssignmentVisitor;
 }());

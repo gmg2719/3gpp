@@ -3,8 +3,11 @@ export class TypeAssignmentVisitor {
     if (!typeAssignmentCtx) {
       return;
     }
+    // tslint:disable-next-line:prefer-const
+    let typeDefinition = null;
     if (typeAssignmentCtx.children) {
       // TODO
     }
+    return typeDefinition;
   }
 }
