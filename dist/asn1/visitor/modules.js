@@ -6,15 +6,10 @@ var ModulesVisitor = /** @class */ (function () {
     }
     ModulesVisitor.prototype.visitChildren = function (modulesCtx) {
         var modules = {};
-        if (!modulesCtx) {
-            return;
-        }
-        if (modulesCtx.children) {
-            for (var _i = 0, _a = modulesCtx.children; _i < _a.length; _i++) {
-                var moduleDefinitionCtx = _a[_i];
-                var _b = moduleDefinitionCtx.accept(new moduleDefinition_1.ModuleDefinitionVisitor()), moduleName = _b.moduleName, moduleBody = _b.moduleBody;
-                modules[moduleName] = moduleBody;
-            }
+        for (var _i = 0, _a = modulesCtx.children; _i < _a.length; _i++) {
+            var moduleDefinitionCtx = _a[_i];
+            var _b = moduleDefinitionCtx.accept(new moduleDefinition_1.ModuleDefinitionVisitor()), moduleName = _b.moduleName, moduleBody = _b.moduleBody;
+            modules[moduleName] = moduleBody;
         }
         return modules;
     };

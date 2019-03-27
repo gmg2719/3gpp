@@ -6,9 +6,6 @@ var ImportsVisitor = /** @class */ (function () {
     function ImportsVisitor() {
     }
     ImportsVisitor.prototype.visitChildren = function (importsCtx) {
-        if (!importsCtx) {
-            return;
-        }
         var imports = null;
         if (importsCtx.children) {
             for (var _i = 0, _a = importsCtx.children; _i < _a.length; _i++) {
