@@ -5,9 +5,6 @@ var TypeAssignmentVisitor = /** @class */ (function () {
     function TypeAssignmentVisitor() {
     }
     TypeAssignmentVisitor.prototype.visitChildren = function (typeAssignmentCtx) {
-        if (!typeAssignmentCtx) {
-            return;
-        }
         // tslint:disable-next-line:prefer-const
         var asnTypeCtx = typeAssignmentCtx.children[1];
         var typeCtx = asnTypeCtx.children[0];
@@ -19,10 +16,9 @@ var TypeAssignmentVisitor = /** @class */ (function () {
             case 'referencedType': {
                 // TODO: is it enough?
                 return { referenceType: typeCtx.getText() };
-                break;
             }
         }
-        return null;
+        throw Error("ASN.1 is badly written or contains unsupported expression\n" + typeAssignmentCtx.getText());
     };
     return TypeAssignmentVisitor;
 }());

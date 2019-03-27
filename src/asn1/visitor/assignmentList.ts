@@ -8,47 +8,38 @@ interface IAssignmentList {
 
 export class AssignmentListVisitor {
   private visitChildren(assignmentListCtx: any): any {
-    if (!assignmentListCtx) {
-      return;
-    }
     const assignments: IAssignmentList = {
       types: {},
       constants: {},
     };
-    if (assignmentListCtx.children) {
-      for (const assignmentCtx of assignmentListCtx.children) {
-        const identifier = assignmentCtx.children[0].getText();
-        const childCtx = assignmentCtx.children[1];
-        switch (ruleName(childCtx, assignmentCtx)) {
-          case 'valueAssignment': {
-            const type = childCtx.children[0].getText();
-            // TODO: Currently only support INTEGER constants
-            if (type !== 'INTEGER') {
-              break;
-            }
-            const value = Number(childCtx.children[2].getText());
-            assignments.constants[identifier] = {type, value};
-            break;
+    for (const assignmentCtx of assignmentListCtx.children) {
+      const identifier = assignmentCtx.children[0].getText();
+      const childCtx = assignmentCtx.children[1];
+      switch (ruleName(childCtx, assignmentCtx)) {
+        case 'valueAssignment': {
+          const type = childCtx.children[0].getText();
+          if (type !== 'INTEGER') {
+            throw Error(`INTEGER is only supported currently\n${childCtx.getText()}`);
           }
-          case 'typeAssignment': {
-            const typeDefinition = childCtx.accept(new TypeAssignmentVisitor());
-            if (!typeDefinition) {
-              break;
-            }
-            assignments.types[identifier] = typeDefinition;
-            break;
-          }
-          case 'parameterizedAssignment': {
-            // TODO
-            break;
-          }
-          case 'objectClassAssignment': {
-            // TBD
-            break;
-          }
-          default: {
-            break;
-          }
+          const value = Number(childCtx.children[2].getText());
+          assignments.constants[identifier] = {type, value};
+          break;
+        }
+        case 'typeAssignment': {
+          const typeDefinition = childCtx.accept(new TypeAssignmentVisitor());
+          assignments.types[identifier] = typeDefinition;
+          break;
+        }
+        case 'parameterizedAssignment': {
+          // TODO
+          break;
+        }
+        case 'objectClassAssignment': {
+          // TBD
+          break;
+        }
+        default: {
+          break;
         }
       }
     }
