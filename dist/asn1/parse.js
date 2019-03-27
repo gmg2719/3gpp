@@ -25,6 +25,6 @@ if (require.main === module) {
         if (err) {
             throw err;
         }
-        process.stdout.write(JSON.stringify(parse(text_1.sanitize(text)), null, 2));
+        process.stdout.write(JSON.stringify(parse(text_1.sanitize(text)), null, 2) + '\n');
     });
 }
