@@ -19,6 +19,5 @@ export class ModuleDefinitionVisitor {
         return {moduleName, moduleBody};
       }
     }
-    throw Error(`ASN.1 is badly written\n${moduleDefinitionCtx.getText()}`);
   }
 }

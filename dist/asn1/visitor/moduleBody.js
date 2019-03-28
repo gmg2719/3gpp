@@ -17,6 +17,10 @@ var ModuleBodyVisitor = /** @class */ (function () {
             for (var _i = 0, _a = moduleBodyCtx.children; _i < _a.length; _i++) {
                 var childCtx = _a[_i];
                 switch (antlrUtils_1.ruleName(childCtx)) {
+                    case 'exports': {
+                        // TODO: TBD. exports always exists, but its child may not exist
+                        break;
+                    }
                     case 'imports': {
                         moduleBody.imports = childCtx.accept(new imports_1.ImportsVisitor());
                         break;
@@ -27,12 +31,8 @@ var ModuleBodyVisitor = /** @class */ (function () {
                         moduleBody.constants = constants;
                         break;
                     }
-                    case 'exports': {
-                        // TODO
-                        break;
-                    }
                     default: {
-                        throw Error("ASN.1 contains unsupported expression\n" + moduleBodyCtx.getText());
+                        break;
                     }
                 }
             }

@@ -20,6 +20,10 @@ export class ModuleBodyVisitor {
     if (moduleBodyCtx.children) {
       for (const childCtx of moduleBodyCtx.children) {
         switch (ruleName(childCtx)) {
+          case 'exports': {
+            // TODO: TBD. exports always exists, but its child may not exist
+            break;
+          }
           case 'imports': {
             moduleBody.imports = childCtx.accept(new ImportsVisitor());
             break;
@@ -30,12 +34,8 @@ export class ModuleBodyVisitor {
             moduleBody.constants = constants;
             break;
           }
-          case 'exports': {
-            // TODO
-            break;
-          }
           default: {
-            throw Error(`ASN.1 contains unsupported expression\n${moduleBodyCtx.getText()}`);
+            break;
           }
         }
       }

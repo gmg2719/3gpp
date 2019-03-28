@@ -13,6 +13,7 @@ var ImportsVisitor = /** @class */ (function () {
                 var childCtx = _a[_i];
                 if (antlrUtils_1.ruleName(childCtx) === 'symbolsImported') {
                     imports = childCtx.accept(new symbolsImported_1.SymbolsImportedVisitor());
+                    break;
                 }
             }
         }

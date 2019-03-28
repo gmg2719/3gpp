@@ -10,6 +10,7 @@ export class ImportsVisitor {
       for (const childCtx of importsCtx.children) {
         if (ruleName(childCtx) === 'symbolsImported') {
           imports = childCtx.accept(new SymbolsImportedVisitor());
+          break;
         }
       }
     }

@@ -22,7 +22,6 @@ var ModuleDefinitionVisitor = /** @class */ (function () {
                 return { moduleName: moduleName, moduleBody: moduleBody };
             }
         }
-        throw Error("ASN.1 is badly written\n" + moduleDefinitionCtx.getText());
     };
     return ModuleDefinitionVisitor;
 }());

@@ -24,7 +24,6 @@ var TypeAssignmentVisitor = /** @class */ (function () {
                 return { referenceType: typeCtx.getText() };
             }
         }
-        throw Error("ASN.1 is badly written or contains unsupported expression\n" + typeAssignmentCtx.getText());
     };
     return TypeAssignmentVisitor;
 }());
