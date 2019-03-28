@@ -1,5 +1,6 @@
 import { ruleName } from '../antlrUtils';
 import { TypeAssignmentVisitor } from './typeAssignment';
+import { ValueAssignmentVisitor } from './valueAssignment';
 
 interface IAssignmentList {
   types: any;
@@ -27,13 +28,10 @@ export class AssignmentListVisitor {
       const childCtx = assignmentCtx.children[1];
       switch (ruleName(childCtx)) {
         case 'valueAssignment': {
-          // TODO: Need to create ValueAssignmentVisitor
-          const type = childCtx.children[0].getText();
-          if (type !== 'INTEGER') {
-            throw Error(`INTEGER is only supported currently\n${childCtx.getText()}`);
+          const valueAssignment = childCtx.accept(new ValueAssignmentVisitor())
+          if (valueAssignment) {
+            assignments.constants[identifier] = valueAssignment;
           }
-          const value = Number(childCtx.children[2].getText());
-          assignments.constants[identifier] = {type, value};
           break;
         }
         case 'typeAssignment': {
