@@ -5,7 +5,7 @@ export class ModuleDefinitionVisitor {
   private visitChildren(moduleDefinitionCtx: any): any {
     const moduleName = moduleDefinitionCtx.children[0].getText();
     for (const childCtx of moduleDefinitionCtx.children) {
-      if (ruleName(childCtx, moduleDefinitionCtx) === 'moduleBody') {
+      if (ruleName(childCtx) === 'moduleBody') {
         const moduleBody = childCtx.accept(new ModuleBodyVisitor());
         return {moduleName, moduleBody};
       }

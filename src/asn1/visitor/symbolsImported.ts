@@ -7,7 +7,7 @@ export class SymbolsImportedVisitor {
       for (const symbolsFromModuleCtx of symbolsFromModuleListCtx.children) {
         const symbolListCtx = symbolsFromModuleCtx.children[0];
         const symbolList = symbolListCtx.children.map((symbolCtx: any) => {
-          if (ruleName(symbolCtx, symbolListCtx) === 'symbol') {
+          if (ruleName(symbolCtx) === 'symbol') {
             return symbolCtx.getText();
           }
         }).filter((symbol: string) => {

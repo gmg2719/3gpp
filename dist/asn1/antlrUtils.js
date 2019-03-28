@@ -1,9 +1,9 @@
 "use strict";
 exports.__esModule = true;
-function ruleName(ctx, parentCtx) {
+function ruleName(ctx) {
     if (!ctx.ruleIndex) {
         return null;
     }
-    return parentCtx.parser.ruleNames[ctx.ruleIndex];
+    return ctx.parser.ruleNames[ctx.ruleIndex];
 }
 exports.ruleName = ruleName;

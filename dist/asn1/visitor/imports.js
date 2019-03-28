@@ -10,7 +10,7 @@ var ImportsVisitor = /** @class */ (function () {
         if (importsCtx.children) {
             for (var _i = 0, _a = importsCtx.children; _i < _a.length; _i++) {
                 var childCtx = _a[_i];
-                if (antlrUtils_1.ruleName(childCtx, importsCtx) === 'symbolsImported') {
+                if (antlrUtils_1.ruleName(childCtx) === 'symbolsImported') {
                     imports = childCtx.accept(new symbolsImported_1.SymbolsImportedVisitor());
                 }
             }

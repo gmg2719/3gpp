@@ -1,6 +1,6 @@
-export function ruleName(ctx: any, parentCtx: any): string {
+export function ruleName(ctx: any): string {
   if (!ctx.ruleIndex) {
     return null;
   }
-  return parentCtx.parser.ruleNames[ctx.ruleIndex];
+  return ctx.parser.ruleNames[ctx.ruleIndex];
 }

@@ -16,7 +16,7 @@ export class ModuleBodyVisitor {
       constants: null,
     };
     for (const childCtx of moduleBodyCtx.children) {
-      switch (ruleName(childCtx, moduleBodyCtx)) {
+      switch (ruleName(childCtx)) {
         case 'imports': {
           moduleBody.imports = childCtx.accept(new ImportsVisitor());
           break;

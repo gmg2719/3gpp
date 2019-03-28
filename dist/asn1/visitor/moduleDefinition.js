@@ -9,7 +9,7 @@ var ModuleDefinitionVisitor = /** @class */ (function () {
         var moduleName = moduleDefinitionCtx.children[0].getText();
         for (var _i = 0, _a = moduleDefinitionCtx.children; _i < _a.length; _i++) {
             var childCtx = _a[_i];
-            if (antlrUtils_1.ruleName(childCtx, moduleDefinitionCtx) === 'moduleBody') {
+            if (antlrUtils_1.ruleName(childCtx) === 'moduleBody') {
                 var moduleBody = childCtx.accept(new moduleBody_1.ModuleBodyVisitor());
                 return { moduleName: moduleName, moduleBody: moduleBody };
             }

@@ -14,7 +14,7 @@ var ModuleBodyVisitor = /** @class */ (function () {
         };
         for (var _i = 0, _a = moduleBodyCtx.children; _i < _a.length; _i++) {
             var childCtx = _a[_i];
-            switch (antlrUtils_1.ruleName(childCtx, moduleBodyCtx)) {
+            switch (antlrUtils_1.ruleName(childCtx)) {
                 case 'imports': {
                     moduleBody.imports = childCtx.accept(new imports_1.ImportsVisitor());
                     break;

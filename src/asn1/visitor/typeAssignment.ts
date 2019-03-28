@@ -5,7 +5,7 @@ export class TypeAssignmentVisitor {
     // tslint:disable-next-line:prefer-const
     const asnTypeCtx = typeAssignmentCtx.children[1];
     const typeCtx = asnTypeCtx.children[0];
-    switch (ruleName(typeCtx, asnTypeCtx)) {
+    switch (ruleName(typeCtx)) {
       case 'builtinType': {
         // TODO
         break;

@@ -15,7 +15,7 @@ export class AssignmentListVisitor {
     for (const assignmentCtx of assignmentListCtx.children) {
       const identifier = assignmentCtx.children[0].getText();
       const childCtx = assignmentCtx.children[1];
-      switch (ruleName(childCtx, assignmentCtx)) {
+      switch (ruleName(childCtx)) {
         case 'valueAssignment': {
           const type = childCtx.children[0].getText();
           if (type !== 'INTEGER') {
