@@ -11,7 +11,6 @@ var TypeAssignmentVisitor = /** @class */ (function () {
     function TypeAssignmentVisitor() {
     }
     TypeAssignmentVisitor.prototype.visitChildren = function (typeAssignmentCtx) {
-        // tslint:disable-next-line:prefer-const
         var asnTypeCtx = typeAssignmentCtx.children[1];
         var typeCtx = asnTypeCtx.children[0];
         switch (antlrUtils_1.ruleName(typeCtx)) {
