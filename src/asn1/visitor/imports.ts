@@ -1,6 +1,8 @@
 import { ruleName } from '../antlrUtils';
 import { SymbolsImportedVisitor } from './symbolsImported';
 
+// imports :   (IMPORTS_LITERAL symbolsImported SEMI_COLON )?
+
 export class ImportsVisitor {
   private visitChildren(importsCtx: any): any {
     let imports = null;

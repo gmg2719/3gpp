@@ -4,6 +4,8 @@ interface IModules {
   [moduleName: string]: any;
 }
 
+// modules: moduleDefinition+
+
 export class ModulesVisitor {
   private visitChildren(modulesCtx: any): any {
     const modules: IModules = {};

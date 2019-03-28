@@ -2,6 +2,14 @@
 exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
 var moduleBody_1 = require("./moduleBody");
+// moduleDefinition :  IDENTIFIER (L_BRACE (IDENTIFIER L_PARAN NUMBER R_PARAN)* R_BRACE)?
+//      DEFINITIONS_LITERAL
+//      tagDefault
+//      extensionDefault
+//      ASSIGN_OP
+//       BEGIN_LITERAL
+//      moduleBody
+//       END_LITERAL
 var ModuleDefinitionVisitor = /** @class */ (function () {
     function ModuleDefinitionVisitor() {
     }

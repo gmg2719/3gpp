@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
 var symbolsImported_1 = require("./symbolsImported");
+// imports :   (IMPORTS_LITERAL symbolsImported SEMI_COLON )?
 var ImportsVisitor = /** @class */ (function () {
     function ImportsVisitor() {
     }

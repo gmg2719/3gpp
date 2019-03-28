@@ -8,6 +8,8 @@ interface IModuleBody {
   constants: any;
 }
 
+// moduleBody :  (exports imports assignmentList) ?
+
 export class ModuleBodyVisitor {
   private visitChildren(moduleBodyCtx: any): any {
     const moduleBody: IModuleBody = {

@@ -2,6 +2,15 @@
 exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
 var typeAssignment_1 = require("./typeAssignment");
+// assignmentList :  (assignment) (assignment)*
+// assignment :
+//  (IDENTIFIER
+// 	(  valueAssignment
+// 	 | typeAssignment
+// 	 | parameterizedAssignment
+// 	 | objectClassAssignment
+// 	)
+//  )
 var AssignmentListVisitor = /** @class */ (function () {
     function AssignmentListVisitor() {
     }
@@ -16,6 +25,7 @@ var AssignmentListVisitor = /** @class */ (function () {
             var childCtx = assignmentCtx.children[1];
             switch (antlrUtils_1.ruleName(childCtx)) {
                 case 'valueAssignment': {
+                    // TODO: Need to create ValueAssignmentVisitor
                     var type = childCtx.children[0].getText();
                     if (type !== 'INTEGER') {
                         throw Error("INTEGER is only supported currently\n" + childCtx.getText());

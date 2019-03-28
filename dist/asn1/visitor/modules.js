@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var moduleDefinition_1 = require("./moduleDefinition");
+// modules: moduleDefinition+
 var ModulesVisitor = /** @class */ (function () {
     function ModulesVisitor() {
     }

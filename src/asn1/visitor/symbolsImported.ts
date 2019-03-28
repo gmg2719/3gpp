@@ -1,5 +1,13 @@
 import { ruleName } from '../antlrUtils';
 
+// symbolsImported : (symbolsFromModuleList )?
+// symbolsFromModuleList :
+//      (symbolsFromModule) (symbolsFromModule)*
+// symbolsFromModule : symbolList FROM_LITERAL globalModuleReference
+// symbolList   : (symbol) (COMMA symbol)*
+// globalModuleReference : IDENTIFIER assignedIdentifier
+// assignedIdentifier :
+
 export class SymbolsImportedVisitor {
   private visitChildren(symbolsImportedCtx: any): any {
     const imports: any = {};

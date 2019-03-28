@@ -1,6 +1,12 @@
 "use strict";
 exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
+// typeAssignment :
+//       ASSIGN_OP
+//       asnType
+// asnType : (builtinType | referencedType) (constraint)*
+// referencedType :
+//   definedType
 var TypeAssignmentVisitor = /** @class */ (function () {
     function TypeAssignmentVisitor() {
     }

@@ -6,6 +6,16 @@ interface IAssignmentList {
   constants: any;
 }
 
+// assignmentList :  (assignment) (assignment)*
+// assignment :
+//  (IDENTIFIER
+// 	(  valueAssignment
+// 	 | typeAssignment
+// 	 | parameterizedAssignment
+// 	 | objectClassAssignment
+// 	)
+//  )
+
 export class AssignmentListVisitor {
   private visitChildren(assignmentListCtx: any): any {
     const assignments: IAssignmentList = {
@@ -17,6 +27,7 @@ export class AssignmentListVisitor {
       const childCtx = assignmentCtx.children[1];
       switch (ruleName(childCtx)) {
         case 'valueAssignment': {
+          // TODO: Need to create ValueAssignmentVisitor
           const type = childCtx.children[0].getText();
           if (type !== 'INTEGER') {
             throw Error(`INTEGER is only supported currently\n${childCtx.getText()}`);

@@ -3,6 +3,7 @@ exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
 var assignmentList_1 = require("./assignmentList");
 var imports_1 = require("./imports");
+// moduleBody :  (exports imports assignmentList) ?
 var ModuleBodyVisitor = /** @class */ (function () {
     function ModuleBodyVisitor() {
     }

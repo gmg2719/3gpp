@@ -1,6 +1,13 @@
 "use strict";
 exports.__esModule = true;
 var antlrUtils_1 = require("../antlrUtils");
+// symbolsImported : (symbolsFromModuleList )?
+// symbolsFromModuleList :
+//      (symbolsFromModule) (symbolsFromModule)*
+// symbolsFromModule : symbolList FROM_LITERAL globalModuleReference
+// symbolList   : (symbol) (COMMA symbol)*
+// globalModuleReference : IDENTIFIER assignedIdentifier
+// assignedIdentifier :
 var SymbolsImportedVisitor = /** @class */ (function () {
     function SymbolsImportedVisitor() {
     }
