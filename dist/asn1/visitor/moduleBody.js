@@ -13,25 +13,27 @@ var ModuleBodyVisitor = /** @class */ (function () {
             types: null,
             constants: null
         };
-        for (var _i = 0, _a = moduleBodyCtx.children; _i < _a.length; _i++) {
-            var childCtx = _a[_i];
-            switch (antlrUtils_1.ruleName(childCtx)) {
-                case 'imports': {
-                    moduleBody.imports = childCtx.accept(new imports_1.ImportsVisitor());
-                    break;
-                }
-                case 'assignmentList': {
-                    var _b = childCtx.accept(new assignmentList_1.AssignmentListVisitor()), types = _b.types, constants = _b.constants;
-                    moduleBody.types = types;
-                    moduleBody.constants = constants;
-                    break;
-                }
-                case 'exports': {
-                    // TODO
-                    break;
-                }
-                default: {
-                    throw Error("ASN.1 contains unsupported expression\n" + moduleBodyCtx.getText());
+        if (moduleBodyCtx.children) {
+            for (var _i = 0, _a = moduleBodyCtx.children; _i < _a.length; _i++) {
+                var childCtx = _a[_i];
+                switch (antlrUtils_1.ruleName(childCtx)) {
+                    case 'imports': {
+                        moduleBody.imports = childCtx.accept(new imports_1.ImportsVisitor());
+                        break;
+                    }
+                    case 'assignmentList': {
+                        var _b = childCtx.accept(new assignmentList_1.AssignmentListVisitor()), types = _b.types, constants = _b.constants;
+                        moduleBody.types = types;
+                        moduleBody.constants = constants;
+                        break;
+                    }
+                    case 'exports': {
+                        // TODO
+                        break;
+                    }
+                    default: {
+                        throw Error("ASN.1 contains unsupported expression\n" + moduleBodyCtx.getText());
+                    }
                 }
             }
         }
