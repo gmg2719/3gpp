@@ -25,9 +25,14 @@ export class ExtensionAdditionGroup extends Base {
     return this;
   }
 
-  public expand(asn1Pool: any /* TODO */, moduleName?: string, parameterList: string[] = []): ExtensionAdditionGroup {
+  public expand(asn1Pool: any /* TODO */, moduleName?: string, parameterList: string[] = [],
+                expandQueue?: any[]): ExtensionAdditionGroup {
     this.componentTypeList.forEach((item) => {
-      item.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList);
+      if (expandQueue) {
+        expandQueue.push([item, asn1Pool, this.getModuleNameToPass(moduleName), parameterList]);
+      } else {
+        item.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList, expandQueue);
+      }
     });
     return this;
   }

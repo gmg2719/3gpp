@@ -33,11 +33,16 @@ var ExtensionAdditionGroup = /** @class */ (function (_super) {
         }
         return this;
     };
-    ExtensionAdditionGroup.prototype.expand = function (asn1Pool /* TODO */, moduleName, parameterList) {
+    ExtensionAdditionGroup.prototype.expand = function (asn1Pool /* TODO */, moduleName, parameterList, expandQueue) {
         var _this = this;
         if (parameterList === void 0) { parameterList = []; }
         this.componentTypeList.forEach(function (item) {
-            item.expand(asn1Pool, _this.getModuleNameToPass(moduleName), parameterList);
+            if (expandQueue) {
+                expandQueue.push([item, asn1Pool, _this.getModuleNameToPass(moduleName), parameterList]);
+            }
+            else {
+                item.expand(asn1Pool, _this.getModuleNameToPass(moduleName), parameterList, expandQueue);
+            }
         });
         return this;
     };

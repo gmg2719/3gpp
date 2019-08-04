@@ -5,7 +5,8 @@ import { IFormatConfig, IIe } from '../format/xlsx';
 export abstract class Base {
   public moduleName: string;
 
-  public abstract expand(asn1Pool: any /* TODO */, moduleName?: string, parameterList?: string[]): Base;
+  public abstract expand(asn1Pool: any /* TODO */, moduleName?: string, parameterList?: string[],
+                         expandQueue?: any[]): Base;
   public abstract depthMax(): number;
   public abstract toString(): string;
   public abstract fillWorksheet(ieElem: IIe, ws: any, row: number, col: number, depthMax: number,

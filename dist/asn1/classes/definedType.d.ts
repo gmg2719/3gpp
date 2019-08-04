@@ -7,7 +7,7 @@ export declare class DefinedType extends Base {
     actualParameterList: any[];
     withComponents: WithComponents;
     setConstraint(constraint: any): DefinedType;
-    expand(asn1Pool: any, moduleName?: string, parameterList?: string[]): Base;
+    expand(asn1Pool: any, moduleName?: string, parameterList?: string[], expandQueue?: any[]): Base;
     depthMax(): number;
     replaceParameters(parameterMapping: {}): void;
     toString(): string;

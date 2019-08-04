@@ -30,11 +30,16 @@ var Choice = /** @class */ (function (_super) {
         }
         return this;
     };
-    Choice.prototype.expand = function (asn1Pool /* TODO */, moduleName, parameterList) {
+    Choice.prototype.expand = function (asn1Pool /* TODO */, moduleName, parameterList, expandQueue) {
         var _this = this;
         if (parameterList === void 0) { parameterList = []; }
         this.choices.forEach(function (choice) {
-            choice.expand(asn1Pool, _this.getModuleNameToPass(moduleName), parameterList);
+            if (expandQueue) {
+                expandQueue.push([choice, asn1Pool, _this.getModuleNameToPass(moduleName), parameterList]);
+            }
+            else {
+                choice.expand(asn1Pool, _this.getModuleNameToPass(moduleName), parameterList, expandQueue);
+            }
         });
         return this;
     };

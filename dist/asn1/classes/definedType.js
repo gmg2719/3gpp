@@ -34,7 +34,7 @@ var DefinedType = /** @class */ (function (_super) {
         }
         return this;
     };
-    DefinedType.prototype.expand = function (asn1Pool /* TODO*/, moduleName, parameterList) {
+    DefinedType.prototype.expand = function (asn1Pool /* TODO*/, moduleName, parameterList, expandQueue) {
         var _this = this;
         if (parameterList === void 0) { parameterList = []; }
         if (parameterList.indexOf(this.typeReference) !== -1) {
@@ -60,7 +60,7 @@ var DefinedType = /** @class */ (function (_super) {
             typeReference: "" + this.toString()
         });
         definition.replaceParameters(parameterMapping);
-        definition.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList);
+        definition.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList, expandQueue);
         return definition;
     };
     DefinedType.prototype.depthMax = function () {

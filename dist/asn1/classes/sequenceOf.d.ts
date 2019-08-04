@@ -9,7 +9,7 @@ export declare class SequenceOf extends Base {
     sizeMax: number | string;
     constructor(type: NamedType);
     setConstraint(constraint: any): SequenceOf;
-    expand(asn1Pool: any, moduleName?: string, parameterList?: string[]): SequenceOf;
+    expand(asn1Pool: any, moduleName?: string, parameterList?: string[], expandQueue?: any[]): SequenceOf;
     depthMax(): number;
     replaceParameters(parameterMapping: {}): void;
     toString(): string;

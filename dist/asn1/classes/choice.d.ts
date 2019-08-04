@@ -5,7 +5,7 @@ export declare class Choice extends Base {
     choices: NamedType[];
     constructor(choices: any);
     setConstraint(constraint: any): Choice;
-    expand(asn1Pool: any, moduleName?: string, parameterList?: string[]): Choice;
+    expand(asn1Pool: any, moduleName?: string, parameterList?: string[], expandQueue?: any[]): Choice;
     depthMax(): number;
     replaceParameters(parameterMapping: {}): void;
     toString(): string;

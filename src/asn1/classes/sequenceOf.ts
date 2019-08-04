@@ -39,9 +39,10 @@ export class SequenceOf extends Base {
     return this;
   }
 
-  public expand(asn1Pool: any /* TODO */, moduleName?: string, parameterList: string[] = []): SequenceOf {
+  public expand(asn1Pool: any /* TODO */, moduleName?: string, parameterList: string[] = [],
+                expandQueue?: any[]): SequenceOf {
     const typeToExpand = cloneDeep(this.type);
-    this.expandedType = typeToExpand.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList);
+    this.expandedType = typeToExpand.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList, expandQueue);
     return this;
   }
 

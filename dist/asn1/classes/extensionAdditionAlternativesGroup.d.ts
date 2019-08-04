@@ -5,7 +5,7 @@ export declare class ExtensionAdditionAlternativesGroup extends Base {
     alternativeTypeList: NamedType[];
     constructor(alternativeTypeList: any, versionNumber: any);
     setConstraint(constraint: any): ExtensionAdditionAlternativesGroup;
-    expand(asn1Pool: any, moduleName?: string, parameterList?: string[]): ExtensionAdditionAlternativesGroup;
+    expand(asn1Pool: any, moduleName?: string, parameterList?: string[], expandQueue?: any[]): ExtensionAdditionAlternativesGroup;
     depthMax(): number;
     replaceParameters(paramterMapping: {}): void;
     toString(): string;

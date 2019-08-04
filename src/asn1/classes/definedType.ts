@@ -24,7 +24,8 @@ export class DefinedType extends Base {
     return this;
   }
 
-  public expand(asn1Pool: any /* TODO*/, moduleName?: string, parameterList: string[] = []): Base {
+  public expand(asn1Pool: any /* TODO*/, moduleName?: string, parameterList: string[] = [],
+                expandQueue?: any[]): Base {
     if (parameterList.indexOf(this.typeReference) !== -1) {
       return this;
     }
@@ -48,7 +49,7 @@ export class DefinedType extends Base {
       typeReference: `${this.toString()}`,
     });
     definition.replaceParameters(parameterMapping);
-    definition.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList);
+    definition.expand(asn1Pool, this.getModuleNameToPass(moduleName), parameterList, expandQueue);
     return definition;
   }
 

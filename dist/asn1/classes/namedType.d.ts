@@ -7,7 +7,7 @@ export declare class NamedType extends Base {
     default: any;
     constructor(name: string, type: any);
     setConstraint(constraint: any): NamedType;
-    expand(asn1Pool: any, moduleName?: string, parameterList?: string[]): NamedType;
+    expand(asn1Pool: any, moduleName?: string, parameterList?: string[], expandQueue?: any[]): NamedType;
     depthMax(): number;
     replaceParameters(parameterMapping: {}): void;
     toString(): string;

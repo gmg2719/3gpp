@@ -5,7 +5,7 @@ export declare class Sequence extends Base {
     items: NamedType[];
     constructor(items: any[]);
     setConstraint(constraint: any): Sequence;
-    expand(asn1Pool: any, moduleName?: string, parameterList?: string[]): Sequence;
+    expand(asn1Pool: any, moduleName?: string, parameterList?: string[], expandQueue?: any[]): Sequence;
     depthMax(): number;
     replaceParameters(parameterMapping: {}): void;
     toString(): string;
